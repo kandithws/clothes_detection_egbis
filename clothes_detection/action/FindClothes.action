@@ -1,0 +1,7 @@
+#goal definition
+---
+#result definition
+clothes_detection/ClothesArray result
+---
+#feedback
+int32 percent_complete #0%-100%

@@ -1,0 +1,58 @@
+<launch>
+
+    <node name="clothes_detection_node" pkg="clothes_detection" type="clothes_detection_node" output="screen">
+
+        <!--<param name="input_topic" type="string" value="/camera/depth_registered/points"/>-->
+        <param name="input_topic" type="string" value="/cloud_pcd"/>
+
+        <!-- White Color Threshold -->
+        <param name="threshold_sat_lower" type="int" value="0"/>
+        <param name="threshold_sat_upper" type="int" value="15"/>
+        <param name="threshold_value_lower" type="int" value="150"/>
+        <param name="threshold_value_upper" type="int" value="255"/>
+
+        <!-- EGBIS Constraints -->
+
+        <param name="egbis_coarse_sigma" type="double" value="2.5"/>
+        <param name="egbis_coarse_k" type="double" value="370"/>
+        <param name="egbis_coarse_min_size" type="double" value="3500"/>
+        <param name="egbis_coarse_percent_area_th" type="double" value="3.00"/>
+
+        <param name="egbis_fine_sigma" type="double" value="1.5"/>
+        <param name="egbis_fine_k" type="double" value="300"/>
+        <param name="egbis_fine_min_size" type="double" value="2000"/>
+        <param name="egbis_fine_percent_area_th" type="double" value="2.20"/>
+
+        <!-- Euclidean Clustering Extraction Constraints -->
+
+        <param name="ece_cluster_tolerance" type="double" value="0.05"/>
+        <param name="ece_min_cluster_size" type="double" value="8000"/>
+        <param name="ece_max_cluster_size" type="double" value="200000"/>
+
+        <!-- Passthrough Filter Scene Search Space -->
+
+        <param name="pass_scene_enable_y" type="boolean" value="False"/>
+        //This one
+        <param name="transform_cloud_to_base_link" type="boolean" value="False"/>
+        <param name="pass_through_min_z" type="double" value="0.0"/>
+        <param name="pass_through_max_z" type="double" value="1.0"/>
+        <param name="pass_through_min_y" type="double" value="0.0"/>
+        <param name="pass_through_max_y" type="double" value="2.0"/>
+        <param name="pass_through_min_x" type="double" value="0.0"/>
+        <param name="pass_through_max_x" type="double" value="3.0"/>
+
+        <!-- Cloud Waiting Time -->
+        <param name="cloud_waiting_time" type="double" value="20.0"/>
+
+        <!-- Algorithm : ANALYZE_FROM_PLANE 0 ,ANALYZE_FROM_CLUSTER 1, ANALYZE_FROM_FINE_CROPPED_CLUSTER 2-->
+        <param name="algorithm" type="int" value="2"/>
+
+        <!-- Total Clothes in Pile-->
+        <param name="total_clothes" type="int" value="6"/>
+
+        <!-- Offline Test (Whether To Use TF in test)-->
+        <param name="offline_test" type="int" value="0"/>
+
+    </node>
+
+</launch>
